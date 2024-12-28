@@ -37,3 +37,5 @@ function add(a, b) {
   console.log(calculator('subtract', 10, 4));  // Output: 6
   console.log(calculator('multiply', 3, 4));   // Output: 12
   console.log(calculator('divide', 12, 4));    // Output: 3
+  
+  //merge test

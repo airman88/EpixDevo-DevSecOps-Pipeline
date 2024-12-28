@@ -75,3 +75,4 @@ jobs:
  # with:
   #  target: 'http://localhost:3000'
   #  api-key: ${{ secrets.ZAP_API_KEY }}
+  #merge test

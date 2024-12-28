@@ -30,3 +30,5 @@ print(calculator('add', 3, 4))        # Output: 7
 print(calculator('subtract', 10, 4))  # Output: 6
 print(calculator('multiply', 3, 4))   # Output: 12
 print(calculator('divide', 12, 4))    # Output: 3
+
+#merge test
