@@ -1,0 +1,77 @@
+# .github/workflows/ci-cd-pipeline.yml
+#DevOps Workflow Configuration
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js (example, adjust based on your tech stack)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to environment
+      run: echo "Deploying application..."
+
+  security:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Start the application
+      run: |
+        npm start &
+        sleep 10 # Wait for the application to start
+
+ #   - name: OWASP ZAP Scan
+  #    uses: zaproxy/action-full-scan@v0.3.0
+   #   with:
+    #    target: 'http://localhost:3000' # Adjust the URL to match your application
+
+#    - name: Upload ZAP report
+ #     uses: actions/upload-artifact@v2
+  #    with:
+   #     name: zap-report
+    #
+     #   - name: OWASP ZAP Scan
+#OWASP ZAP Scan
+  #uses: zaproxy/action-full-scan@v0.3.0
+  #with:
+   # target: 'http://localhost:3000'
+   # api-key: ${{ secrets.ZAP_API_KEY }}
+#Secure Secrets 
+#- name: OWASP ZAP Scan
+ # uses: zaproxy/action-full-scan@v0.3.0
+ # with:
+  #  target: 'http://localhost:3000'
+  #  api-key: ${{ secrets.ZAP_API_KEY }}
